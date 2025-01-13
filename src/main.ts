@@ -1,4 +1,3 @@
-import 'material-design-lite';
 import {ComponentFactory} from 'iizuna';
 import {SliderComponent} from './components/slider.component';
 import {PasswordGeneratorComponent} from './components/password-generator.component';

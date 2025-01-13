@@ -34,7 +34,7 @@ export class PasswordGeneratorComponent extends AbstractComponent implements OnR
 	@GlobalEventListener('update-password-length update-special-chars')
 	public generate(): void {
 		this.displayInput.value = this.generator.generate();
-		this.children['create'][0].innerText = this.displayInput.value;
+		(this.children['create'][0] as HTMLElement).innerText = this.displayInput.value;
 		this.updateHaveIBeenPwned();
 	}
 

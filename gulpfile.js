@@ -5,8 +5,8 @@ let {series, dest, src} = require("gulp"),
 	glob = require('glob'),
 	uglify = require('gulp-uglify'),
 	buffer = require('vinyl-buffer'),
-	sass = require('gulp-sass');
-sass.compiler = require('node-sass');
+	sass = require('gulp-sass')(require('sass-embedded'));
+sass.compiler = require('sass-embedded');
 
 
 // Build JS
@@ -18,9 +18,15 @@ function scripts () {
 		cache: {},
 		packageCache: {}
 	}).plugin(tsify, {
-		target: 'ES5',
-		experimentalDecorators: true,
-		lib: ['es2018', 'dom']
+		"module": "commonjs",
+		"target": "ES6",
+		"noImplicitAny": false,
+		"sourceMap": false,
+		"outDir": "public",
+		types: ["node", "chrome"],
+		"noEmitOnError": true,
+		"typeRoots": ["node_modules/@types"],
+		"experimentalDecorators": true
 	})
 	  .bundle()
 	  .pipe(source('build.js'))

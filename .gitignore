@@ -3,3 +3,5 @@ node_modules/
 .idea/
 public/build.js
 public/main.css
+/coverage
+.nyc_output
